@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -9,29 +10,48 @@ const Navbar = () => {
 
         {/* Logo */}
         <div className="h-full w-[150px] flex items-center overflow-hidden">
-          <img
-            src="/images/logo.png"
-            alt="Logo"
-            className="h-full w-full object-cover cursor-pointer"
-          />
+          <Link to="/">
+            <img
+              src="/images/logo.png"
+              alt="Logo"
+              className="h-full w-full object-cover cursor-pointer"
+            />
+          </Link>
         </div>
 
         {/* Navbar Links */}
         <div className="flex items-center space-x-6 text-[#111] font-medium">
-          {["Home", "About Us", "Rent a Car", "Domestic Tour", "International Tour", "Day Tour", "Contact Us"].map((item) => (
-            <a
-              key={item}
-              href="#"
-              className="hover:text-blue-700 hover:scale-125 transition-all transform"
-            >
-              {item}
-            </a>
-          ))}
+
+          <Link to="/" className="hover:text-blue-700 hover:scale-125 transition-all transform">
+            Home
+          </Link>
+
+          <Link to="/about-us" className="hover:text-blue-700 hover:scale-125 transition-all transform">
+            About Us
+          </Link>
+
+          <Link to="/rent-car" className="hover:text-blue-700 hover:scale-125 transition-all transform">
+            Rent a Car
+          </Link>
+
+          <Link to="/domestic-tour" className="hover:text-blue-700 hover:scale-125 transition-all transform">
+            Domestic Tour
+          </Link>
+
+          <Link to="/international-tour" className="hover:text-blue-700 hover:scale-125 transition-all transform">
+            International Tour
+          </Link>
+
+          <Link to="/day-tour" className="hover:text-blue-700 hover:scale-125 transition-all transform">
+            Day Tour
+          </Link>
+
+          <Link to="/contact-us" className="hover:text-blue-700 hover:scale-125 transition-all transform">
+            Contact Us
+          </Link>
         </div>
       </div>
 
-      {/* Marquee */}
-    
     </div>
   )
 }
