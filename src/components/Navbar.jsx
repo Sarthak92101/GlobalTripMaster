@@ -47,7 +47,7 @@ const Navbar = () => {
           </Link>
 
           <Link to="/contact-us" className="hover:text-blue-700 hover:scale-125 transition-all transform">
-            Contact Us
+            Get in Touch
           </Link>
         </div>
       </div>

@@ -26,13 +26,7 @@ const App = () => {
         <Route path='/day-tour' element={<DayTour />} />
         <Route path='/contact-us' element={<ContactUs />} /> 
       </Routes>
-   <div className="overflow-hidden whitespace-nowrap h-20 mt-10 bg-red-200 flex items-center">
-        <div className="animate-marquee text-[#111] text-3xl px-3 inline-block">
-          This Website is under construction -- This Website is under construction -- This Website is under construction
-        </div>
-      </div>
-
-
+  
       <Footer/>
 
     </div>
