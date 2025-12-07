@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+
 
 const HomeHeroThree = () => {
   return (
@@ -25,9 +27,6 @@ const HomeHeroThree = () => {
       </div>
 
 
-
-
-
       <div className='w-screen bg-white h-screen'>
         <div className='w-full h-[35%] flex flex-col justify-center items-center p-10'>
           <p className='mt-10 text-gray-600'>Process</p>
@@ -45,7 +44,7 @@ const HomeHeroThree = () => {
               <p className='text-sm font-semibold'>Step One</p>
 
               <h1 className='text-3xl font-bold leading-tight'>
-                Search 
+                Search
               </h1>
 
               <p className='text-sm'>
@@ -66,9 +65,6 @@ const HomeHeroThree = () => {
           </div>
 
 
-
-
-
           <div className='h-[70%] w-[23%] rounded-2xl border border-blue-900 overflow-hidden flex flex-col cursor-pointer hover:scale-105 transition-all'>
 
             {/* Text Section */}
@@ -76,7 +72,7 @@ const HomeHeroThree = () => {
               <p className='text-sm font-semibold'>Step Two</p>
 
               <h1 className='text-3xl font-bold leading-tight'>
-                Book 
+                Book
               </h1>
 
               <p className='text-sm opacity-80'>
@@ -84,7 +80,7 @@ const HomeHeroThree = () => {
               </p>
 
               <p className='mt-4 font-medium cursor-pointer flex items-center gap-1 hover:gap-2 transition-all'>
-               Next <i className="ri-arrow-right-s-line text-lg"></i>
+                Next <i className="ri-arrow-right-s-line text-lg"></i>
               </p>
             </div>
 
@@ -103,7 +99,7 @@ const HomeHeroThree = () => {
               <p className='text-sm font-semibold'>Step Three</p>
 
               <h1 className='text-3xl font-bold leading-tight'>
-               Travel
+                Travel
               </h1>
 
               <p className='text-sm opacity-80'>
@@ -111,7 +107,7 @@ const HomeHeroThree = () => {
               </p>
 
               <p className='mt-4 font-medium cursor-pointer flex items-center gap-1 hover:gap-2 transition-all'>
-              Done <i className="ri-arrow-right-s-line text-lg"></i>
+                Done <i className="ri-arrow-right-s-line text-lg"></i>
               </p>
             </div>
 
@@ -129,6 +125,35 @@ const HomeHeroThree = () => {
 
       </div>
 
+
+      <div className='w-screen bg-white h-screen '>
+        <div className='w-full h-[35%] flex flex-col justify-center items-center p-10'>
+          <p className='mt-10 text-gray-600'>Story</p>
+          <h2 className='text-5xl mt-5 text-gray-600'>Where to go next</h2>
+          <p className='mt-5 text-xl text-gray-600'>we beleibe everyone deserves seamless travel</p>
+        </div>
+
+        <div className='w-full h-[65%] flex justify-evenly  py-10'>
+          <div>
+            <p className='mt-10 text-gray-600'>Mission</p>
+            <h2 className='text-5xl mt-5 text-gray-600'>Connecting travelers with thw world</h2>
+            <p className='mt-5 text-xl text-gray-600 leading-relaxed'>Global trip master was founded on belief that booking travel should be <br /> straightforward, not complicated. we buit a platform that brings flights, <br /> trains,cabs and hotels together so you can plan yur entire journey in minutes.
+            </p>
+            <div className='flex gap-2 border-[1px] rounded-[6px]'>
+              <Link to="/contact-us" ><button className=" font-medium  transition-all hover:bg-black hover:text-white cursor-pointer rounded-[6px]  border-black p-2  text-black">
+              Learn</button>
+            </Link>
+
+            <p className=' font-medium text-black cursor-pointer flex items-center gap-1 hover:gap-2 transition-all'>
+              Discover <i className="ri-arrow-right-s-line text-lg"></i>
+            </p>
+            </div>
+
+          </div>
+          <img src="/images/CU11.jpg" alt="" className='w-[30%] object-cover rounded-2xl shadow-lg' />
+        </div>
+
+      </div>
 
 
 
