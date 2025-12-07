@@ -3,7 +3,7 @@ import "remixicon/fonts/remixicon.css";
 
 const HomeHeroTwo = () => {
   return (
-    <div className='w-screen bg-gray-300 h-screen'>
+    <div className='w-screen  h-screen'>
 
       {/* Top Section */}
       <div className='w-full h-[35%] flex flex-col justify-center items-center p-10'>
@@ -16,10 +16,10 @@ const HomeHeroTwo = () => {
       <div className='w-full h-[65%] px-[30px] flex items-center justify-evenly gap-10'>
 
         {/* CARD */}
-        <div className='h-[80%] w-[23%] bg-orange-300 rounded-2xl border border-blue-900 overflow-hidden flex flex-col cursor-pointer hover:scale-105 transition-all'>
+        <div className='h-[80%] w-[23%]  rounded-2xl border border-blue-900 overflow-hidden flex flex-col cursor-pointer hover:scale-105 transition-all'>
 
           {/* Text Section */}
-          <div className='p-6 text-white space-y-3'>
+          <div className='p-6 text-black space-y-3'>
             <p className='text-sm font-semibold'>Flights</p>
 
             <h1 className='text-3xl font-bold leading-tight'>
@@ -43,10 +43,10 @@ const HomeHeroTwo = () => {
           />
         </div>
 
-        <div className='h-[80%] w-[23%] bg-orange-300 rounded-2xl border border-blue-900 overflow-hidden flex flex-col cursor-pointer hover:scale-105 transition-all'>
+        <div className='h-[80%] w-[23%] rounded-2xl border border-blue-900 overflow-hidden flex flex-col cursor-pointer hover:scale-105 transition-all'>
 
           {/* Text Section */}
-          <div className='p-6 text-white space-y-3'>
+          <div className='p-6 text-black space-y-3'>
             <p className='text-sm font-semibold'>Train</p>
 
             <h1 className='text-3xl font-bold leading-tight'>
@@ -70,10 +70,10 @@ const HomeHeroTwo = () => {
           />
         </div>
 
-        <div className='h-[80%] w-[23%] bg-orange-300 rounded-2xl border border-blue-900 overflow-hidden flex flex-col cursor-pointer hover:scale-105 transition-all'>
+        <div className='h-[80%] w-[23%]  rounded-2xl border border-blue-900 overflow-hidden flex flex-col cursor-pointer hover:scale-105 transition-all'>
 
           {/* Text Section */}
-          <div className='p-6 text-white space-y-3'>
+          <div className='p-6 text-black space-y-3'>
             <p className='text-sm font-semibold'>Cabs</p>
 
             <h1 className='text-3xl font-bold leading-tight'>
@@ -97,10 +97,10 @@ const HomeHeroTwo = () => {
           />
         </div>
 
-        <div className='h-[80%] w-[23%] bg-orange-300 rounded-2xl border border-blue-900 overflow-hidden flex flex-col cursor-pointer hover:scale-105 transition-all'>
+        <div className='h-[80%] w-[23%]  rounded-2xl border border-blue-900 overflow-hidden flex flex-col cursor-pointer hover:scale-105 transition-all'>
 
           {/* Text Section */}
-          <div className='p-6 text-white space-y-3'>
+          <div className='p-6 text-black space-y-3'>
             <p className='text-sm font-semibold'>Hotels</p>
 
             <h1 className='text-3xl font-bold leading-tight'>
