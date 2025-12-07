@@ -4,8 +4,8 @@ const AboutUs = () => {
   return (
     <div className='w-screen'>
       <div className=' relative h-[50vh] w-screen flex justify-center mt-5 '>
-        <img className=' h-full w-[90%]  rounded-[20px] object-cover' src="/images/CU1.jpg" alt="" />
-        <h1 className='absolute text-white text-4xl font-bold mt-[23%] mr-[70%] text-5xl'>
+        <img className=' h-full w-[90%]  rounded-[20px] object-cover' src="/images/CU3.jpg" alt="" />
+        <h1 className='absolute text-black text-4xl font-bold mt-[23%] mr-[70%] text-5xl'>
           About Us
         </h1>
 

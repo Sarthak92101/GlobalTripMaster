@@ -8,7 +8,7 @@ const ContactUs = () => {
       <div className="relative w-[40%] h-[85%] flex justify-center items-center">
         <img
           className="h-full w-full rounded-2xl object-cover"
-          src="/images/CU4.jpg"
+          src="/images/CU1.jpg"
           alt="Contact"
         />
 
