@@ -4,12 +4,14 @@ import HomeHeroTop from '../components/HomeHeroTop';
 import HomeHeroTwo from '../components/HomeHeroTwo';
 import HomeHeroThree from '../components/HomeHeroThree';
 import QuestionHero from '../components/QuestionHero';
+import TourSlider from '../components/TourSlider';
 
 const Home = () => {
   return (
     <div className="w-screen">
 
 <HomeHeroTop/>
+<TourSlider/>
 <HomeHeroTwo/>
 <HomeHeroThree/>
 <QuestionHero/>
