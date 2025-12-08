@@ -7,6 +7,7 @@ import HomeHeroFour from '../components/HomeHeroFour';
 import QuestionHero from '../components/QuestionHero';
 import TourSlider from '../components/TourSlider';
 import InternationalSlider from '../components/InternationalSlider';
+import DayToursGrid from '../components/DayTours';
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
 <HomeHeroTop/>
 <TourSlider/>
 <InternationalSlider/>
+<DayToursGrid/>
 <HomeHeroTwo/>
 <HomeHeroThree/>
 <QuestionHero/>
