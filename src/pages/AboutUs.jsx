@@ -41,9 +41,7 @@ const AboutUs = () => {
       </div>
 
 
-      <div>
-        <h1 className='bg-black flex items-center justify-center text-white'>Niche footer ayega</h1>
-      </div>
+      
 
     </div>
   )
