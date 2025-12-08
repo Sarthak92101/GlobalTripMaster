@@ -5,6 +5,7 @@ import HomeHeroTwo from '../components/HomeHeroTwo';
 import HomeHeroThree from '../components/HomeHeroThree';
 import QuestionHero from '../components/QuestionHero';
 import TourSlider from '../components/TourSlider';
+import InternationalSlider from '../components/InternationalSlider';
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
 
 <HomeHeroTop/>
 <TourSlider/>
+<InternationalSlider/>
 <HomeHeroTwo/>
 <HomeHeroThree/>
 <QuestionHero/>

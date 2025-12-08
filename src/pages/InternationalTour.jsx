@@ -1,9 +1,10 @@
 import React from 'react'
+import InternationalSlider from '../components/InternationalSlider'
 
 const InternationalTour = () => {
   return (
-    <div>
-      
+    <div className="w-screen">
+      <InternationalSlider />
     </div>
   )
 }

@@ -1,59 +1,67 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-const tours = [
+const internationalTours = [
   {
-    title: 'Goa Tour Package',
-    nights: '03 Nights / 04 Days',
-    price: '₹ 7,999',
-    image: 'https://www.travelindiatours.in/images/tours/domestic/goa-tour.jpg',
+    title: 'Singapore Tour Package',
+    nights: '04 Nights / 05 Days',
+    price: '₹ 24,999',
+    image: 'https://www.travelindiatours.in/images/tours/international/singapore-tour.jpg',
     cta: 'Enquire Now',
   },
   {
-    title: 'Kashmir Tour Package',
+    title: 'Malaysia Tour Package',
     nights: '04 Nights / 05 Days',
+    price: '₹ 22,499',
+    image: 'https://www.travelindiatours.in/images/tours/international/malaysia-tour.jpg',
+    cta: 'Enquire Now',
+  },
+  {
+    title: 'Thailand Tour Package',
+    nights: '05 Nights / 06 Days',
     price: '₹ 18,999',
-    image: 'https://www.travelindiatours.in/images/tours/domestic/kashmir-tour.jpg',
+    image: 'https://www.travelindiatours.in/images/tours/international/thailand-tour.jpg',
     cta: 'Enquire Now',
   },
   {
-    title: 'North East Tour Package',
-    nights: '07 Nights / 08 Days',
-    price: '₹ 33,999',
-    image: 'https://www.travelindiatours.in/images/tours/domestic/north-east-tour.jpg',
-    cta: 'Enquire Now',
-  },
-  {
-    title: 'Rajasthan Tour Package',
+    title: 'Indonesia Tour Package',
     nights: '05 Nights / 06 Days',
-    price: '₹ 5,499',
-    image: 'https://www.travelindiatours.in/images/tours/domestic/rajasthan-tour.png',
+    price: '₹ 21,999',
+    image: 'https://www.travelindiatours.in/images/tours/international/indonesia-tour.jpg',
     cta: 'Enquire Now',
   },
   {
-    title: 'Kerala Tour Package',
-    nights: '05 Nights / 06 Days',
-    price: '₹ 14,999',
-    image: 'https://www.travelindiatours.in/images/tours/domestic/kerala-tour.jpg',
-    cta: 'Enquire Now',
-  },
-  {
-    title: 'Golden Triangle Tour Package',
+    title: 'Maldives Tour Package',
     nights: '04 Nights / 05 Days',
-    price: '₹ 14,999',
-    image: 'https://www.travelindiatours.in/images/tours/domestic/golden-triangle-tour.jpg',
+    price: '₹ 34,999',
+    image: 'https://www.travelindiatours.in/images/tours/international/maldives-tour.jpg',
+    cta: 'Enquire Now',
+  },
+  {
+    title: 'Dubai Tour Package',
+    nights: '04 Nights / 05 Days',
+    price: '₹ 19,999',
+    image: 'https://www.travelindiatours.in/images/tours/international/dubai-tour.jpg',
+    cta: 'Enquire Now',
+  },
+  {
+    title: 'Nepal Tour Package',
+    nights: '04 Nights / 05 Days',
+    price: '₹ 15,999',
+    image: 'https://www.travelindiatours.in/images/tours/international/nepal-tour.jpg',
     cta: 'Enquire Now',
   },
 ]
 
-const TourSlider = () => {
+const InternationalSlider = () => {
   const scrollRef = useRef(null)
   const cardRefs = useRef([])
   const [active, setActive] = useState(0)
+  const [hovered, setHovered] = useState(null)
 
   // Auto-slide every 2s
   useEffect(() => {
     const id = setInterval(() => {
-      setActive((prev) => (prev + 1) % tours.length)
+      setActive((prev) => (prev + 1) % internationalTours.length)
     }, 2000)
     return () => clearInterval(id)
   }, [])
@@ -71,8 +79,8 @@ const TourSlider = () => {
   const scrollByCard = (direction) => {
     setActive((prev) => {
       const next = prev + direction
-      if (next < 0) return tours.length - 1
-      if (next >= tours.length) return 0
+      if (next < 0) return internationalTours.length - 1
+      if (next >= internationalTours.length) return 0
       return next
     })
   }
@@ -80,12 +88,12 @@ const TourSlider = () => {
   return (
     <section className="w-screen bg-gradient-to-b from-white to-gray-100 py-12 px-6 md:px-12 min-h-[90vh]">
       <style>{`
-        [data-slider-container]::-webkit-scrollbar { display: none; }
+        [data-intl-slider]::-webkit-scrollbar { display: none; }
       `}</style>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-4xl font-semibold text-gray-800">Top Domestic Tour Packages</h2>
-          <p className="text-xl text-gray-600 mt-2">Packages for best-selling destinations in India</p>
+          <h2 className="text-4xl font-semibold text-gray-800">Top International Tour Packages</h2>
+          <p className="text-xl text-gray-600 mt-2">Amazing international holiday packages</p>
         </div>
         <div className="hidden md:flex gap-3">
           <button
@@ -109,13 +117,15 @@ const TourSlider = () => {
         ref={scrollRef}
         className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory pb-2 px-1"
         style={{
-          scrollbarWidth: 'none', // Firefox
-          msOverflowStyle: 'none', // IE/Edge
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
         }}
-        data-slider-container
+        data-intl-slider
       >
-        {tours.map((tour, idx) => {
+        {internationalTours.map((tour, idx) => {
           const isActive = idx === active
+          const isHovered = hovered === idx
+          const isColored = isActive || isHovered
           return (
             <article
               key={tour.title}
@@ -125,13 +135,15 @@ const TourSlider = () => {
                 minWidth: 'calc((100vw - 6rem) / 3)',
                 maxWidth: 'calc((100vw - 6rem) / 3)',
               }}
+              onMouseEnter={() => setHovered(idx)}
+              onMouseLeave={() => setHovered(null)}
             >
               <img
                 src={tour.image}
                 alt={tour.title}
                 className="h-[70vh] md:h-[75vh] lg:h-[80vh] w-full object-cover transition duration-500"
                 loading="lazy"
-                style={{ filter: isActive ? 'none' : 'grayscale(1)' }}
+                style={{ filter: isColored ? 'none' : 'grayscale(1)' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/60 to-transparent"></div>
               <div className="absolute inset-x-0 bottom-0 p-6 text-white space-y-2 backdrop-blur-[2px]">
@@ -156,5 +168,5 @@ const TourSlider = () => {
   )
 }
 
-export default TourSlider
+export default InternationalSlider
 
