@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const tours = [
   {
@@ -47,20 +47,37 @@ const tours = [
 
 const TourSlider = () => {
   const scrollRef = useRef(null)
-  const firstCardRef = useRef(null)
+  const cardRefs = useRef([])
+  const [active, setActive] = useState(0)
+
+  // Auto-slide every 2s
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActive((prev) => (prev + 1) % tours.length)
+    }, 2000)
+    return () => clearInterval(id)
+  }, [])
+
+  // Scroll to active card smoothly
+  useEffect(() => {
+    const el = cardRefs.current[active]
+    if (el) el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+  }, [active])
 
   const scrollByCard = (direction) => {
-    const cardWidth = firstCardRef.current?.offsetWidth || 320
-    const gap = 16 // gap-4
-    const distance = direction * (cardWidth + gap)
-
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: distance, behavior: 'smooth' })
-    }
+    setActive((prev) => {
+      const next = prev + direction
+      if (next < 0) return tours.length - 1
+      if (next >= tours.length) return 0
+      return next
+    })
   }
 
   return (
     <section className="w-screen bg-gradient-to-b from-white to-gray-100 py-12 px-6 md:px-12 min-h-[90vh]">
+      <style>{`
+        [data-slider-container]::-webkit-scrollbar { display: none; }
+      `}</style>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-4xl font-semibold text-gray-800">Top Domestic Tour Packages</h2>
@@ -86,31 +103,50 @@ const TourSlider = () => {
 
       <div
         ref={scrollRef}
-        className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory pb-2"
+        className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory pb-2 px-1"
+        style={{
+          scrollbarWidth: 'none', // Firefox
+          msOverflowStyle: 'none', // IE/Edge
+        }}
+        data-slider-container
       >
-        {tours.map((tour, idx) => (
-          <article
-            key={tour.title}
-            ref={idx === 0 ? firstCardRef : null}
-            className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[45vw] lg:min-w-[calc((100vw-4rem)/3)] lg:max-w-[calc((100vw-4rem)/3)] snap-start relative rounded-3xl overflow-hidden shadow-lg bg-black"
-          >
-            <img
-              src={tour.image}
-              alt={tour.title}
-              className="h-[70vh] md:h-[75vh] lg:h-[80vh] w-full object-cover"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-            <div className="absolute inset-x-0 bottom-0 p-6 text-white space-y-2">
-              <p className="text-sm font-semibold uppercase tracking-wide">{tour.nights}</p>
-              <h3 className="text-2xl font-semibold leading-tight">{tour.title}</h3>
-              <p className="text-lg font-semibold">{tour.price} <span className="text-sm font-normal">per person</span></p>
-              <button className="mt-3 bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-full text-sm font-medium transition">
-                {tour.cta}
-              </button>
-            </div>
-          </article>
-        ))}
+        {tours.map((tour, idx) => {
+          const isActive = idx === active
+          return (
+            <article
+              key={tour.title}
+              ref={(el) => (cardRefs.current[idx] = el)}
+              className="snap-center relative rounded-3xl overflow-hidden shadow-lg bg-black"
+              style={{
+                minWidth: 'calc((100vw - 6rem) / 3)',
+                maxWidth: 'calc((100vw - 6rem) / 3)',
+              }}
+            >
+              <img
+                src={tour.image}
+                alt={tour.title}
+                className="h-[70vh] md:h-[75vh] lg:h-[80vh] w-full object-cover transition duration-500"
+                loading="lazy"
+                style={{ filter: isActive ? 'none' : 'grayscale(1)' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/60 to-transparent"></div>
+              <div className="absolute inset-x-0 bottom-0 p-6 text-white space-y-2 backdrop-blur-[2px]">
+                <p className="text-sm font-semibold uppercase tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                  {tour.nights}
+                </p>
+                <h3 className="text-2xl md:text-3xl font-semibold leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                  {tour.title}
+                </h3>
+                <p className="text-lg font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                  {tour.price} <span className="text-sm font-normal">per person</span>
+                </p>
+                <button className="mt-4 bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-full text-base font-semibold transition drop-shadow-[0_3px_10px_rgba(0,0,0,0.45)]">
+                  {tour.cta}
+                </button>
+              </div>
+            </article>
+          )
+        })}
       </div>
     </section>
   )
